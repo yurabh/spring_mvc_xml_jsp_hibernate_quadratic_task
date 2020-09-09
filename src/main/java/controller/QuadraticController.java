@@ -1,63 +1,60 @@
 package controller;
 
-import dao.CoefficientDao;
-import dao.RootDao;
-import model.Coefficient;
-import model.Root;
+import domain.Coefficient;
+import domain.Root;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import service.CoefficientService;
+import service.RootService;
 
 @Controller
 public class QuadraticController {
+
+    private CoefficientService coefficientService;
+
+    private RootService rootService;
+
+    @Autowired
+    public QuadraticController(CoefficientService coefficientService, RootService rootService) {
+        this.coefficientService = coefficientService;
+        this.rootService = rootService;
+    }
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView index() {
         return new ModelAndView("index", "command", new Coefficient());
     }
 
-    @RequestMapping(value = "/addCof", method = RequestMethod.POST)
-    public String viewData(@ModelAttribute("dispatcher") Coefficient coefficient, Root root, ModelMap model) {
+    @RequestMapping(value = "/save_coefficient_and_root", method = RequestMethod.GET)
+    public String saveCoefficientAndRoot(@ModelAttribute("dispatcher") Coefficient coefficient,
+                                         Root root, ModelMap model) {
         model.addAttribute("a", coefficient.getA());
         model.addAttribute("b", coefficient.getB());
         model.addAttribute("c", coefficient.getC());
-        saveCoefficientToDb(coefficient);
 
-        Double d = (coefficient.getB() * coefficient.getB()) - (4 * coefficient.getA() * coefficient.getC());
+        coefficientService.create(coefficient);
+
+        Double d = coefficientService.discriminator(coefficient);
+
+        Root newRoot = rootService.create(root, coefficient);
 
         if (d == 0) {
-            Double x = coefficient.getB() * (-1) / (2 * coefficient.getA());
-            root.setX1(x);
-            root.setX2(x);
-            saveRootToDb(root);
-            model.addAttribute("x1", x);
+            model.addAttribute("x1", newRoot.getX1());
             return "resultX";
         }
-
         if (d > 0) {
-            Double x1 = (coefficient.getB() * (-1) + Math.sqrt(d)) / (2 * coefficient.getA());
-            Double x2 = (coefficient.getB() * (-1) - Math.sqrt(d)) / (2 * coefficient.getA());
-            root.setX1(x1);
-            root.setX2(x2);
-            saveRootToDb(root);
-            model.addAttribute("x1", x1);
-            model.addAttribute("x2", x2);
+            model.addAttribute("x1", newRoot.getX1());
+            model.addAttribute("x2", newRoot.getX2());
             return "resultX1X2";
+
+
         } else {
             return "withoutResult";
         }
-    }
-
-    private void saveCoefficientToDb(Coefficient coefficient) {
-        CoefficientDao coefficientDao = new CoefficientDao();
-        coefficientDao.createCoefficient(coefficient);
-    }
-
-    private void saveRootToDb(Root root) {
-        RootDao rootDao = new RootDao();
-        rootDao.createRoot(root);
     }
 }

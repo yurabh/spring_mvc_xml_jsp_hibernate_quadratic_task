@@ -1,20 +1,28 @@
-package model;
+package domain;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "roots")
-public class Root {
+@Table(name = "coefficients")
+public class Coefficient {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     @Column(nullable = false)
-    private Double x1;
+    private Double a;
+
     @Column(nullable = false)
-    private Double x2;
+    private Double b;
+
+    @Column(nullable = false)
+    private Double c;
 }

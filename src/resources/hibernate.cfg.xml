@@ -11,8 +11,7 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
-        <mapping class="model.Coefficient"/>
-        <mapping class="model.Root"/>
-
+        <mapping class="domain.Coefficient"/>
+        <mapping class="domain.Root"/>
     </session-factory>
 </hibernate-configuration>

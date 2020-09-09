@@ -1,13 +1,11 @@
-package Test;
-
-import dao.RootDao;
-import dao.SessionMeneger;
-import model.Root;
+import dao.RootImplDao;
+import dao.SessionManager;
+import domain.Root;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Test;
 
-public class testRoot {
+public class RootTest {
 
     @Test
     public void testCreateRoot() {
@@ -16,7 +14,7 @@ public class testRoot {
         root.setX1(3.7);
         root.setX2(4.7);
 
-        Session session = SessionMeneger.getFactory().openSession();
+        Session session = SessionManager.getFactory().openSession();
         Transaction transaction = session.beginTransaction();
 
         session.save(root);
@@ -32,7 +30,7 @@ public class testRoot {
         root.setX1(33.7);
         root.setX2(4234.7);
 
-        RootDao rootDao = new RootDao();
-        rootDao.createRoot(root);
+        RootImplDao rootImplDao = new RootImplDao();
+        rootImplDao.create(root);
     }
 }

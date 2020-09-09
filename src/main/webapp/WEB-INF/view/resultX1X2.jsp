@@ -1,21 +1,18 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Юрій
-  Date: 05.05.2019
-  Time: 09:15
-  To change this template use File | Settings | File Templates.
---%>
 <%@page contentType="text/html;charset = UTF-8" language="java" %>
 <%--<%@page isELIgnored="false" %>--%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <html>
 <head>
     <title>resultX1X2Page</title>
 </head>
+
 <body style="background-color: darkgray">
 
 <div align="center" style="margin:10%">
-    <h3>Result of Root X1X2</h3>
+
+    <h3>Result of Root X1 and X2</h3>
+
     <table>
         <tr>
             <td>Coefficient a</td>

@@ -1,13 +1,12 @@
-package Test;
-
-import dao.CoefficientDao;
-import dao.SessionMeneger;
-import model.Coefficient;
+import dao.CoefficientImplDao;
+import dao.SessionManager;
+import domain.Coefficient;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Test;
 
-public class testCoefficient {
+public class CoefficientTest {
+
     @Test
     public void testCreateCoefficient() {
         Coefficient coefficient = new Coefficient();
@@ -16,11 +15,10 @@ public class testCoefficient {
         coefficient.setB(2.8);
         coefficient.setC(3.9);
 
-        Session session = SessionMeneger.getFactory().openSession();
+        Session session = SessionManager.getFactory().openSession();
         Transaction transaction = session.beginTransaction();
 
         session.persist(coefficient);
-
         transaction.commit();
         session.close();
     }
@@ -33,7 +31,7 @@ public class testCoefficient {
         coefficient.setB(23.8);
         coefficient.setC(34.9);
 
-        CoefficientDao coefficientDao = new CoefficientDao();
-        coefficientDao.createCoefficient(coefficient);
+        CoefficientImplDao coefficientImplDao = new CoefficientImplDao();
+        coefficientImplDao.create(coefficient);
     }
 }
