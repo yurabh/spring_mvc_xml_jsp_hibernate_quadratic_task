@@ -1,6 +1,6 @@
-package service;
+package com.service;
 
-import domain.Coefficient;
+import com.domain.Coefficient;
 
 public interface CoefficientService {
 

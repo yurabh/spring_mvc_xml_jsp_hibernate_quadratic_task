@@ -1,4 +1,4 @@
-package dao;
+package com.dao.session_factory;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;

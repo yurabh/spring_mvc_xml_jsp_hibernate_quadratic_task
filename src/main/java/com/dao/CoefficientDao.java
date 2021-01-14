@@ -1,6 +1,6 @@
-package dao;
+package com.dao;
 
-import domain.Coefficient;
+import com.domain.Coefficient;
 
 public interface CoefficientDao {
 

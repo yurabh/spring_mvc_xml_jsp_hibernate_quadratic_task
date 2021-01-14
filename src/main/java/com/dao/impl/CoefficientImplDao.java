@@ -1,6 +1,8 @@
-package dao;
+package com.dao.impl;
 
-import domain.Coefficient;
+import com.dao.CoefficientDao;
+import com.dao.session_factory.SessionManager;
+import com.domain.Coefficient;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;

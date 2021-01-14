@@ -1,7 +1,7 @@
-package controller;
+package com.controller;
 
-import domain.Coefficient;
-import domain.Root;
+import com.domain.Coefficient;
+import com.domain.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import service.CoefficientService;
-import service.RootService;
+import com.service.CoefficientService;
+import com.service.RootService;
 
 @Controller
 public class QuadraticController {
@@ -30,7 +30,7 @@ public class QuadraticController {
         return new ModelAndView("index", "command", new Coefficient());
     }
 
-    @RequestMapping(value = "/save_coefficient_and_root", method = RequestMethod.GET)
+    @RequestMapping(value = "/saveCoefficientAndRoot", method = RequestMethod.GET)
     public String saveCoefficientAndRoot(@ModelAttribute("dispatcher") Coefficient coefficient,
                                          Root root, ModelMap model) {
         model.addAttribute("a", coefficient.getA());
@@ -51,8 +51,6 @@ public class QuadraticController {
             model.addAttribute("x1", newRoot.getX1());
             model.addAttribute("x2", newRoot.getX2());
             return "resultX1X2";
-
-
         } else {
             return "withoutResult";
         }

@@ -1,4 +1,4 @@
-package domain;
+package com.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,4 +22,9 @@ public class Root {
 
     @Column(nullable = false)
     private Double x2;
+
+    public Root(Double x1, Double x2) {
+        this.x1 = x1;
+        this.x2 = x2;
+    }
 }

@@ -1,6 +1,8 @@
-package dao;
+package com.dao.impl;
 
-import domain.Root;
+import com.dao.RootDao;
+import com.dao.session_factory.SessionManager;
+import com.domain.Root;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;

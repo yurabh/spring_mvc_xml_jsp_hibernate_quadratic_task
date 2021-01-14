@@ -1,9 +1,10 @@
-package service;
+package com.service.impl;
 
-import dao.CoefficientDao;
-import domain.Coefficient;
+import com.dao.CoefficientDao;
+import com.domain.Coefficient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.service.CoefficientService;
 
 @Service
 public class CoefficientImplService implements CoefficientService {

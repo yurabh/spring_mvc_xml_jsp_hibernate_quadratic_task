@@ -1,7 +1,7 @@
-package service;
+package com.service;
 
-import domain.Coefficient;
-import domain.Root;
+import com.domain.Coefficient;
+import com.domain.Root;
 
 public interface RootService {
 

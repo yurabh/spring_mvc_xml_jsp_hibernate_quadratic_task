@@ -1,6 +1,6 @@
-package dao;
+package com.dao;
 
-import domain.Root;
+import com.domain.Root;
 
 public interface RootDao {
 

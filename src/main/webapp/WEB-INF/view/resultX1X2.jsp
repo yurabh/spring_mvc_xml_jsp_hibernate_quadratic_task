@@ -1,5 +1,4 @@
 <%@page contentType="text/html;charset = UTF-8" language="java" %>
-<%--<%@page isELIgnored="false" %>--%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <html>
@@ -36,8 +35,8 @@
             <td>The root of the equation x2</td>
             <td>${x2}</td>
         </tr>
-
     </table>
+
 </div>
 </body>
 </html>
